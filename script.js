@@ -26,7 +26,7 @@ const GameBoard = (() => {
     const updateBoard = (cell, sign) => {
         gameBoard[cell] = sign;
         count++;
-        console.log("count:", count);
+        //console.log("count:", count);
         if (checkWin()) {
             turnMessage.textContent = `Player ${sign} won the game`;
             emptygameBoard();
@@ -43,8 +43,9 @@ const GameBoard = (() => {
 
     emptygameBoard = () =>{
         for(let i=0;i<gameBoard.length;i++){
-            GameBoard[i] = "";
+            gameBoard[i] = "";
         }
+        
         count = 0;
     }
 
@@ -100,12 +101,12 @@ const PlayGame = (() => {
 
     resetButton.addEventListener('click', () => {
         cellElements.forEach(cell => {
-            turnMessage.textContent = `Player X's turn`;
             cell.textContent = "";
             cell.classList.remove("cell-selected");
-            whoseTurn = true;
             cell.addEventListener('click', handleClick);
         })
+        turnMessage.textContent = `Player X's turn`;
+        whoseTurn = true;
     });
 
     removeClick = () => {
